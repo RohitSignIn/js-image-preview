@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+* body {
+  overflow: hidden;
+}
+* body form {
+  background-color: #2d2d2d;
+  padding: 20px;
+  color: #fff;
+}
+* body #img_con {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+* body #img_con #show_img {
+  display: none;
+  position: absolute;
+  top: 30%;
+  transform: translateY(-30%);
+  width: 400px;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+* body #img_con #show_img::before {
+  content: "";
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  width: 400px;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  mix-blend-mode: screen;
+}
+* body #img_con #main {
+  display: none;
+  padding: 10px;
+  margin-top: 250px;
+  background-color: #2d2d2d;
+  z-index: 1000;
+  border-radius: 5px;
+  gap: 5px;
+}
+* body #img_con #main #format_con {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+* body #img_con #main #format_con #form_orig {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+* body #img_con #main #format_con .format {
+  border-radius: 5px;
+  cursor: pointer;
+}
+* body #img_con #main #format_con .format img {
+  width: 40px;
+  height: 40px;
+}
+* body #img_con #main #use_img {
+  padding: 10px;
+  width: 100%;
+}/*# sourceMappingURL=style.css.map */

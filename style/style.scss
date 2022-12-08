@@ -1,0 +1,85 @@
+$pictWidth: 400px;
+$frmtWidth: 400px;
+$pictHeight: 400px;
+$frmtHeight: 400px;
+$clrMain: #2d2d2d;
+
+@mixin backgroundStyle {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    body{
+        overflow: hidden;
+        form {
+        background-color: $clrMain;
+        padding: 20px;
+        color: #fff;
+    }
+    #img_con {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        #show_img {
+            display: none;
+            position: absolute;
+            top: 30%;
+            transform: translateY(-30%);
+            width: $pictWidth;
+            height: $pictHeight;
+            @include backgroundStyle;
+            &::before{
+                content: '';
+                position: absolute;
+                top: 30%;
+                left: 50%;
+                transform: translate(-50%, -30%);
+                width: $frmtWidth;
+                height: $frmtHeight;
+                @include backgroundStyle;
+                mix-blend-mode: screen;
+            }
+        }
+        #main {
+            display: none;
+            padding: 10px;
+            margin-top: 250px;
+            background-color: $clrMain;
+            z-index: 1000;
+            border-radius: 5px;
+            gap: 5px;
+            #format_con {
+                display: flex;
+                justify-content: center;
+                gap: 5px;
+                #form_orig {
+                    width: 100%;
+                    padding: 10px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+                .format {
+                    border-radius: 5px;
+                    cursor: pointer;
+                    img {
+                        width: 40px;
+                        height: 40px;
+                    }
+                }
+            }
+            #use_img {
+                padding: 10px;
+                width: 100%;
+            }
+        }
+    }
+}
+}
+

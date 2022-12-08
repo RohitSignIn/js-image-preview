@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/9fd12573ed.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./style/style.css">
+    <title>Assignment</title>
+</head>
+
+<body>
+    <form action="">
+        <input type="file" id="imgUpload">
+    </form>
+
+    <div id="img_con">
+        <div id="show_img"></div>
+        <div id="main">
+            <div id="format_con">
+                <button id="form_orig">Original</button>
+                <button class="format" onclick="setFormat(this)" format="./crop_format/heart.jpg"><img
+                        src="./crop_format/heart.jpg" alt=""></button>
+                <button class="format" onclick="setFormat(this)" format="./crop_format/square.jpg"><img
+                        src="./crop_format/square.jpg" alt=""></button>
+                <button class="format" onclick="setFormat(this)" format="./crop_format/circle.jpg"><img
+                        src="./crop_format/circle.jpg" alt=""></button>
+                <button class="format" onclick="setFormat(this)" format="./crop_format/rectangle.jpg"><img
+                        src="./crop_format/rectangle.jpg" alt=""></button>
+            </div>
+            <button id="use_img">USE THIS IMAGE</button>
+        </div>
+    </div>
+    <script>
+
+        const input_img = document.querySelector("#imgUpload");
+        const preview_img = document.querySelector("#show_img");
+        const styleTag = document.head.appendChild(document.createElement("style"))
+
+        // Apply Format On Click
+        function setFormat(e) {
+            const format = e.getAttribute('format');
+            styleTag.innerHTML = "";
+            styleTag.insertAdjacentHTML(`beforeend`, `#show_img::before{ background: url(${format}) }`);
+        }
+
+        // Apply Original On Click
+        document.getElementById("form_orig").addEventListener('click', function () {
+            styleTag.innerHTML = "";
+        })
+
+        // Add Image On Choose File
+        input_img.addEventListener("change", function () {
+
+            const reader = new FileReader();
+            reader.addEventListener("load", () => {
+
+                const uploaded_image = reader.result;
+                styleTag.innerHTML = "";
+                document.getElementById('show_img').style.display = "block"
+                document.getElementById("show_img").style.backgroundImage = `url(${uploaded_image})`;
+                document.getElementById('main').style.display = "block"
+            });
+            reader.readAsDataURL(this.files[0]);
+        })
+
+        // Hide Main on Click
+        document.getElementById("use_img").addEventListener('click', function () {
+            document.getElementById('main').style.display = "none"
+        })
+
+    </script>
+</body>
+
+</html>
